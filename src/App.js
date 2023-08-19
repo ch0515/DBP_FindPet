@@ -12,7 +12,7 @@ function App() {
       <Route path='/login' element={<loginPage/>}/>
       <Route path='/join' element={<loginPage/>}/>
       <Route path='/write' element={<writePage/>}/>
-      <Route path='/' element={<postReadPage/>}/>
+      <Route path='/read' element={<postReadPage/>}/>
     </Route>
   );
 }
