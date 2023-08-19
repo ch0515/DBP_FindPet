@@ -1,19 +1,19 @@
 import {Route, Routes} from 'react-router-dom';
-import postListPage from './pages/postList/postListPage';
-import loginPage from './pages/login/loginPage';
-import joinPage from './pages/join/joinPage';
-import writePage from './pages/write/writePage';
-import postReadPage from './pages/postread/postreadPage';
+import PostListPage from './pages/postList/postListPage';
+import LoginPage from './pages/login/loginPage';
+import JoinPage from './pages/join/joinPage';
+import WritePage from './pages/write/writePage';
+import PostReadPage from './pages/postread/postreadPage';
 
 function App() {
   return (
-    <Route>
-      <Route path='/' element={<postListPage/>}/>
-      <Route path='/login' element={<loginPage/>}/>
-      <Route path='/join' element={<loginPage/>}/>
-      <Route path='/write' element={<writePage/>}/>
-      <Route path='/read' element={<postReadPage/>}/>
-    </Route>
+    <Routes>
+      <Route path='/' element={<PostListPage/>}/>
+      <Route path='/login' element={<LoginPage/>}/>
+      <Route path='/join' element={<JoinPage/>}/>
+      <Route path='/write' element={<WritePage/>}/>
+      <Route path='/read' element={<PostReadPage/>}/>
+    </Routes>
   );
 }
 
