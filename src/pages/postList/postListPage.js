@@ -1,4 +1,9 @@
+import Navbar from '../../components/Navbar';
 const postListPage = () => {
-    return <div>포스트 리스트</div>
+    return (
+      <div>
+        <Navbar/>
+      </div>
+    );
 };
 export default postListPage;

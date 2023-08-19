@@ -1,0 +1,41 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #DAC0A2;
+    padding: 10px 20px;
+    color: black;
+  }
+  
+  .logostyle {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    margin: 0;
+    margin-right: 10px;
+  }
+  
+  .logoimage {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .Menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbarMenu {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  .navbarMenu:first-child {
+    margin-left: 0;
+  }
+  
