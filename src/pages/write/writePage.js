@@ -1,4 +1,4 @@
-const writePage = () => {
+const WritePage = () => {
     return <div>글 쓰기</div>
 };
-export default writePage;
+export default WritePage;
