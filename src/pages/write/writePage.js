@@ -88,7 +88,7 @@ const WritePage = () => {
           {selectedImage && (
             <div>
               <label>미리보기</label>
-              <img src={selectedImage} alt="미리보기" />
+              <img src={selectedImage} alt="미리보기"style={{maxWidth: '300px', maxHeight: '300px'}}/>
             </div>
           )}
           <button type="submit">글 작성</button>
