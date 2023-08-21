@@ -21,44 +21,54 @@ const WritePage = () => {
       formData.append('phoneNumber', phoneNumber);
       formData.append('address', address);
       formData.append('memo', memo);
-      if (photoFile) {
-        formData.append('photo', photoFile);
-      }
+        if (photoFile) {
+          formData.append('photo', photoFile);
+        }else{
   
       // FormData를 서버로 업로드 (동일한 코드 유지)
   
       setSelectedImage(null); // 폼 제출 후 미리보기 이미지 초기화
+        }
     };
   
     const handlePhotoChange = (event) => {
       const selectedFile = event.target.files[0];
       setPhotoFile(selectedFile);
-      setSelectedImage(URL.createObjectURL(selectedFile)); // 미리보기 이미지 설정
+      //setSelectedImage(URL.createObjectURL(selectedFile)); // 미리보기 이미지 설정
+      if (selectedImage) {
+        URL.revokeObjectURL(selectedImage);
+      }
+  
+      if (selectedFile) {
+        setSelectedImage(URL.createObjectURL(selectedFile)); // 미리보기 이미지 설정
+      } else {
+        setSelectedImage(null);
+      }
     };
     return (
-        <div>
-        <h2>글 쓰기</h2>
+        <div className='write-form'>
+        <h2 className='write-name'>글 쓰기</h2>
         <form onSubmit={handleSubmit} className='form-style'>
-          <div>
-            <label>동물 종류</label>
-            <input
+          <div className='animal-group'>
+            <label className='animal-type-name'>동물 종류</label>
+            <input className='animal-type-form'
               type="text"
               value={animalType}
               onChange={(e) => setAnimalType(e.target.value)}
               required
             />
           </div>
-          <div>
-            <label>전화번호</label>
-            <input
+          <div className='tel-group'>
+            <label className='tel-form-name'>전화번호</label>
+            <input className='tel-form'
               type="tel"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               required
             />
           </div>
-          <div>
-          <label
+          <div className='address-group'>
+          <label className='address-serch'
                 onClick={()=>{
                   setPopup(!popup)
                 }}
@@ -67,19 +77,19 @@ const WritePage = () => {
                  popup && 
                     <span><Post address={address} setAddress={setAddress}></Post></span>
                     }
-            <span>{address}</span>
+            <span className='address-name'>{address}</span>
           </div>
-          <div>
-            <label>메모</label>
-            <textarea
+          <div className='memo-group'>
+            <label className='memo-name'>메모</label>
+            <textarea className='memo-form' cols="50" rows="10"
               value={memo}
               onChange={(e) => setMemo(e.target.value)}
               required
             />
           </div>
-          <div>
-            <label>사진 업로드</label>
-            <input
+          <div className='img-group'>
+            <label className='img-name'>사진 업로드</label>
+            <input className='img-form'
               type="file"
               accept="image/*"
               onChange={handlePhotoChange}
@@ -87,11 +97,11 @@ const WritePage = () => {
           </div>
           {selectedImage && (
             <div>
-              <label>미리보기</label>
-              <img src={selectedImage} alt="미리보기"style={{maxWidth: '300px', maxHeight: '300px'}}/>
+              <label className='img-preview'>미리보기</label>
+              <img src={selectedImage} alt="미리보기"style={{maxWidth: '200px', maxHeight: '150px'}}/>
             </div>
           )}
-          <button type="submit">글 작성</button>
+          <button type="submit" className='form-submit'>글 작성</button>
         </form>
       </div>
     );
