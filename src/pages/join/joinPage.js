@@ -1,6 +1,7 @@
 import "./joinPage.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from 'axios';
 
 const JoinPage = () => {
   const navigate = useNavigate();
@@ -17,9 +18,16 @@ const JoinPage = () => {
     }));
   };
   const handleSubmit = (event) =>{
-        event.preventDefault();
-      
-    }
+  axios.post("http://localhost:3001/join", formData)
+  .then((response) => {
+    console.log("Signup successful:", response.data);
+    alert('회원가입이 완료되었습니다.');
+    navigate("/login");
+  })
+  .catch((error) => {
+    console.error("Signup failed:", error);
+  });
+}
   return (
     <div>
       <div className="join-box">
@@ -32,7 +40,7 @@ const JoinPage = () => {
           <div>비밀번호</div>
           <input type="text" name="password" className="pw" value={formData.password} onChange={handleChange}/>
           <div>전화번호</div>
-          <input type="text" name="phone-num" className="phone-num" value={formData.phoneNumber} onChange={handleChange} />
+          <input type="text" name="phoneNumber" className="phone-num" value={formData.phoneNumber} onChange={handleChange} />
           <input onClick={handleSubmit} className="join-btn" type="button" value="회원가입" />
         </form>
       </div>
