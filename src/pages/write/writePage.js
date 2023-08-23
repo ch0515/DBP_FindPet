@@ -51,28 +51,14 @@ const WritePage = () => {
         <form onSubmit={handleSubmit} className='form-style'>
           <div className='animal-group'>
             <label className='animal-type-name'>동물 종류</label>
-            <input className='animal-type-form'
-              type="text"
-              value={animalType}
-              onChange={(e) => setAnimalType(e.target.value)}
-              required
-            />
+            <input className='animal-type-form' type="text" value={animalType} onChange={(e) => setAnimalType(e.target.value)} required/>
           </div>
           <div className='tel-group'>
             <label className='tel-form-name'>전화번호</label>
-            <input className='tel-form'
-              type="tel"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-            />
+            <input className='tel-form' type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required/>
           </div>
           <div className='address-group'>
-          <label className='address-serch'
-                onClick={()=>{
-                  setPopup(!popup)
-                }}
-                >🔍︎ 주소 검색</label>
+          <label className='address-serch' onClick={()=>{setPopup(!popup)}}>🔍︎ 주소 검색</label>
                {
                  popup && 
                     <span><Post address={address} setAddress={setAddress}></Post></span>
@@ -81,19 +67,11 @@ const WritePage = () => {
           </div>
           <div className='memo-group'>
             <label className='memo-name'>메모</label>
-            <textarea className='memo-form' cols="50" rows="10"
-              value={memo}
-              onChange={(e) => setMemo(e.target.value)}
-              required
-            />
+            <textarea className='memo-form' cols="50" rows="10" value={memo} onChange={(e) => setMemo(e.target.value)} required/>
           </div>
           <div className='img-group'>
             <label className='img-name'>사진 업로드</label>
-            <input className='img-form'
-              type="file"
-              accept="image/*"
-              onChange={handlePhotoChange}
-            />
+            <input className='img-form' type="file" accept="image/*" onChange={handlePhotoChange}/>
           </div>
           {selectedImage && (
             <div>
