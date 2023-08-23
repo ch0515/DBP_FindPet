@@ -1,10 +1,23 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './Navbar.css';
 import mainlogo from '../img/logo.png';
 const userData = JSON.parse(sessionStorage.getItem("userData"));
 
 function Navbar(){
+    const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const storedUserData = sessionStorage.getItem("userData");
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("userData");
+    setUserData(null);
+  };
     return(
         <div>
             <div className="navbar">
