@@ -7,6 +7,7 @@ const JoinPage = () => {
   const [formData, setFormData] = useState({
       id: "",
       password: "",
+      phoneNumber: "",
   });
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -30,6 +31,8 @@ const JoinPage = () => {
           <input type="text" name="id" className="id" value={formData.id} onChange={handleChange} />
           <div>비밀번호</div>
           <input type="text" name="password" className="pw" value={formData.password} onChange={handleChange}/>
+          <div>전화번호</div>
+          <input type="text" name="phone-num" className="phone-num" value={formData.phoneNumber} onChange={handleChange} />
           <input onClick={handleSubmit} className="join-btn" type="button" value="회원가입" />
         </form>
       </div>
