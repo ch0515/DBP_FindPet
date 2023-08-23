@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React from "react";
 import './Navbar.css';
 import mainlogo from '../img/logo.png';
+const userData = JSON.parse(sessionStorage.getItem("userData"));
 
 function Navbar(){
     return(
@@ -12,8 +13,17 @@ function Navbar(){
                     <img className="logoimage" src={mainlogo}/>
                 </div>
                 <div className="Menu">
-                <Link className="navbarMenu" to={'/join'}>회원가입</Link>
-                <Link className="navbarMenu" to={'/login'}>로그인</Link>
+                {userData ? ( // 로그인 정보가 있을 경우
+            <>
+              <Link className="navbarMenu" to={'/profile'}>내 정보</Link>
+              <Link className="navbarMenu" to={'/logout'}>로그아웃</Link>
+            </>
+          ) : ( // 로그인 정보가 없을 경우
+            <>
+              <Link className="navbarMenu" to={'/join'}>회원가입</Link>
+              <Link className="navbarMenu" to={'/login'}>로그인</Link>
+            </>
+          )}
                 </div>
             </div>
         </div>
