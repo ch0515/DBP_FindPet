@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import {DaumPostcode, useDaumPostcodePopup} from 'react-daum-postcode';
 import './writePage.css';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Post from '../../components/Popuppost';
 
 const WritePage = () => {
+  const navigate = useNavigate();
     const [popup, setPopup] = React.useState(false);
     const [animalType, setAnimalType] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -24,11 +27,20 @@ const WritePage = () => {
         if (photoFile) {
           formData.append('photo', photoFile);
         }else{
-  
-      // FormData를 서버로 업로드 (동일한 코드 유지)
-  
       setSelectedImage(null); // 폼 제출 후 미리보기 이미지 초기화
         }
+        
+      try{
+        const response = await axios.post('http://localhost:3001/post', formData, {
+          headers: {
+            'Content-Type' : 'multipart/form-data',
+          },
+        });
+        console.log('서버 응답 : ', response.data);
+        navigate("/")
+      }catch(error){
+        console.error('폼 제출 에러 : ', error);
+      }
     };
   
     const handlePhotoChange = (event) => {
