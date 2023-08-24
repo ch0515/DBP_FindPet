@@ -18,7 +18,7 @@ const JoinPage = () => {
     }));
   };
   const handleSubmit = (event) =>{
-  axios.post("http://localhost:3001/join", formData)
+  axios.post("http://localhost:3002/join", formData)
   .then((response) => {
     console.log("Signup successful:", response.data);
     alert('회원가입이 완료되었습니다.');

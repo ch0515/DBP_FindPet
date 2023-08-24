@@ -18,7 +18,7 @@ const handleChange = (event) => {
   };
   const handleSubmit = (event) =>{
     event.preventDefault();
-    axios.post("http://localhost:3001/login", formData)
+    axios.post("http://localhost:3002/login", formData)
     .then((response) => {
       if(response.data.rows.length == 0){
         alert('아이디와 비밀번호가 틀림');
