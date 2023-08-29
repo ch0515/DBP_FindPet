@@ -4,11 +4,13 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "./postListPage.css";
 import writeimg from "../../img/write.png";
+import ImageViewer from '../../components/ImageViewer';
 
 const PostListPage = () => {
     const [userData, setUserData] = useState(null);
     const [posts, setPosts] = useState([]);
     const [, setForceRender] = useState();
+    const [imageUrls, setImageUrls] = useState([]);
 
     useEffect(() => {
         const storedUserData = sessionStorage.getItem("userData");
@@ -16,6 +18,13 @@ const PostListPage = () => {
             setUserData(JSON.parse(storedUserData));
         }
 
+        axios.get("http://localhost:3002/images")
+      .then(response => {
+        setImageUrls(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching image URLs:', error);
+      });
         axios.get("http://localhost:3002/posts")
             .then(response => {
                 const dataFromServer = response.data;
@@ -41,12 +50,13 @@ const PostListPage = () => {
                 <div className='post-grid'>
                     {posts.map(post => (
                         <div key={post} className="post-list">
-                            <img src={post[3]} alt="Post Image"/>
-                            <p>전화번호 : {post[0]}</p>
-                            {/* <p>{post[1]}</p> */}
-                            <p>주소 : {post[2]}</p>
+                            {/* <img src={`http://localhost:3002/images/${post[3]}`} alt="Post Image"/> */}
                             
-                            <p>{post[4]}</p>
+                            <ImageViewer imageUrls={imageUrls} alt={`Post ${post}`} width="100" height="100" />
+                            <p>전화번호 : {post[0]}</p>
+                            <p>종류 : {post[1]}</p>
+                            <p>주소 : {post[2]}</p>
+                            <p>설명 : {post[4]}</p>
                         </div>
                     ))
                     }
