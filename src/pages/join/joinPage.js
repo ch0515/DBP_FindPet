@@ -38,7 +38,7 @@ const JoinPage = () => {
           <div>아이디</div>
           <input type="text" name="id" className="id" value={formData.id} onChange={handleChange} />
           <div>비밀번호</div>
-          <input type="text" name="password" className="pw" value={formData.password} onChange={handleChange}/>
+          <input type="password" name="password" className="pw" value={formData.password} onChange={handleChange}/>
           <div>전화번호</div>
           <input type="text" name="phoneNumber" className="phone-num" value={formData.phoneNumber} onChange={handleChange} />
           <input onClick={handleSubmit} className="join-btn" type="button" value="회원가입" />

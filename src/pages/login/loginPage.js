@@ -40,7 +40,7 @@ const handleChange = (event) => {
           <div>아이디</div>
           <input type="text" name="id" className="id" value={formData.email} onChange={handleChange}/>
           <div>비밀번호</div>
-          <input type="text" name="password" value={formData.password} onChange={handleChange} className="pw"/>
+          <input type="password" name="password" value={formData.password} onChange={handleChange} className="pw"/>
           <input className="loginbtn" type="submit" value="로그인"/>
         </form>
       </div>
