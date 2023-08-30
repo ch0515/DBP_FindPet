@@ -52,11 +52,11 @@ const PostListPage = () => {
                     {posts.map(post => (
                         <div key={post[0]} className="post-list">
                             {/* <img src={`http://localhost:3002/images/${post[3]}`} alt="Post Image"/> */}
-                            <img src={`http://localhost:3002/images/${post[5]}`} alt="이미지" width="250px" height="200px"/>
+                            <img src={`http://localhost:3002/images/${post[5]}`} alt="이미지" width="250px" height="200px" style={{ marginTop: '7px', borderRadius: '8px' }}/>
                             <p>전화번호 : {post[0]}</p>
                             <p>종류 : {post[1]}</p>
                             <p>주소 : {post[2]}</p>
-                            <p>설명 : {post[4]}</p>
+                            <p style={{marginLeft: '4px'}}>설명 : {post[4]}</p>
                         </div>
                     ))
                     }
